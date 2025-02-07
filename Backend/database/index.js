@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
-const ConnectionString = "mongodb+srv://awasthintr07:navraj123@cluster0.hn1sc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-async function connectTodDatabase() {
-    await mongoose.connect(ConnectionString)
+
+async function connectToDatabase() {
+    await mongoose.connect(process.env.DB)
     console.log("Connected to DB successfully")
 }
 
-module.exports = connectTodDatabase
+module.exports = connectToDatabase
