@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        select: false // Enhances security by not returning the password in queries
+        // select: false // Enhances security by not returning the password in queries
     },
     role: {
         type: String,
