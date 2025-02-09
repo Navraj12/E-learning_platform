@@ -16,7 +16,7 @@ const registerUser = TryCatch(async(req, res) => {
     }
 
     // Check if the user already exists
-    let existingUser = await User.find({ email });
+    let existingUser = await User.findOne({ email });
     if (existingUser) {
         return res.status(400).json({
             message: "User already exists with this email.",
