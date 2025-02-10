@@ -4,7 +4,8 @@ dotenv.config();
 
 const connectToDatabase = require('./database/index.js');
 const userRoutes = require('./routes/user.js');
-
+const adminRoutes = require('./routes/admin.js');
+const courseRoutes = require('./routes/course.js');
 const app = express();
 
 // Middleware
@@ -15,8 +16,12 @@ app.get('/', (req, res) => {
     res.send('Welcome to the E-Learning Platform API');
 });
 
+app.use("/uploads", express.static("uploads"))
+
 // User Routes
 app.use("/api/users", userRoutes);
+app.use("/api/admins", adminRoutes);
+app.use("/api/courses", courseRoutes);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
