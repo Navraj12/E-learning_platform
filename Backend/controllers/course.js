@@ -32,5 +32,25 @@ const fetchLectures = TryCatch(async(req, res) => {
         });
     res.json({ lectures })
 })
+const fetchLecture = TryCatch(async(req, res) => {
+    const lecture = await Lecture.find({ course: req.params.id });
+    const user = await User.findById(req.user._id);
 
-module.exports = { getAllCourses, getSingleCourse, fetchLectures }
+    if (user.role === "admin") {
+        return res.json({ lecture });
+    }
+    if (!user.subscription.includes(req.params.id))
+        return res.status(400).json({
+            message: "You have not  subscribed to this course",
+        });
+    res.json({ lecture })
+})
+
+const getMyCourses = TryCatch(async(req, res) => {
+    const courses = await Course.find({ _id: req.user.subscription })
+    res.json({
+        courses,
+    })
+})
+
+module.exports = { getAllCourses, getSingleCourse, fetchLectures, fetchLecture, getMyCourses }

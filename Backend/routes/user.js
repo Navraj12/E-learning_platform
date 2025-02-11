@@ -1,6 +1,8 @@
 const express = require('express');
 const { registerUser, verifyUser, loginUser, myProfile } = require('../controllers/user.js');
-// const isAuth = require('../middlewares/isAuth.js');
+const {
+    isAuth
+} = require('../middlewares/isAuth.js');
 
 const router = express.Router();
 
@@ -25,5 +27,5 @@ const validateRegisterInput = (req, res, next) => {
 router.post('/register', validateRegisterInput, registerUser);
 router.post('/verify', verifyUser);
 router.post('/login', loginUser);
-// router.get('/me', isAuth, myProfile);
+router.get('/me', isAuth, myProfile);
 module.exports = router;

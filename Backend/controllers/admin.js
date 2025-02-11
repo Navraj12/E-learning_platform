@@ -1,6 +1,10 @@
 const TryCatch = require('../middlewares/TryCatch.js');
 const { Course } = require('../models/Course.js');
 const { Lecture } = require('../models/Lecture.js');
+const { rm } = require('fs')
+const { promisify } = require('util')
+const fs = require('fs');
+const { User } = require('../models/User.js');
 
 const createCourse = TryCatch(async(req, res) => {
     console.log("Request Body:", req.body); // Log the request body
@@ -56,4 +60,69 @@ const addLectures = TryCatch(async(req, res) => {
     })
 })
 
-module.exports = { createCourse, addLectures }
+const deleteLecture = TryCatch(async(req, res) => {
+    const lecture = await Lecture.findById(req.params.id);
+    rm(lecture.video, () => {
+        console.log("Video deleted");
+    });
+    await lecture.deleteOne();
+    res.json({
+        message: "Lecture deleted"
+    })
+})
+const unlinkAsync = promisify(fs.unlink)
+const deleteCourse = TryCatch(async(req, res) => {
+    const course = await Course.findById(req.params.id);
+
+    if (!course) {
+        return res.status(404).json({ message: "Course not found" });
+    }
+
+    // Delete all lectures associated with the course
+    const lectures = await Lecture.find({ course: course._id });
+
+    await Promise.all(
+        lectures.map(async(lecture) => {
+            await unlinkAsync(lecture.video); // Delete the video file
+            console.log("Video deleted");
+        })
+    );
+
+    // Delete the course image
+    rm(course.image, () => {
+        console.log("Image deleted");
+    });
+
+    // Delete all lectures associated with the course
+    await Lecture.deleteMany({ course: req.params.id });
+
+    // Delete the course
+    await course.deleteOne();
+
+    // Remove the course from users' subscriptions
+    await User.updateMany({}, {
+        $pull: {
+            subscription: req.params.id,
+        },
+    });
+
+    res.json({
+        message: "Course deleted successfully",
+    });
+});
+
+const getAllStats = TryCatch(async(req, res) => {
+    const totalCourses = (await Course.find()).length;
+    const totalLectures = (await Lecture.find()).length;
+    const totalUsers = (await User.find()).length;
+
+    const stats = {
+        totalCourses,
+        totalLectures,
+        totalUsers,
+    };
+    res.json({ stats, })
+})
+
+
+module.exports = { createCourse, addLectures, deleteLecture, deleteCourse, getAllStats }
