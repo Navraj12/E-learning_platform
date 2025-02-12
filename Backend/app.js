@@ -7,7 +7,7 @@ const userRoutes = require('./routes/user.js');
 const adminRoutes = require('./routes/admin.js');
 const courseRoutes = require('./routes/course.js');
 const app = express();
-
+const paymentRoutes = require("./routes/payment.js");
 // Middleware
 app.use(express.json()); // Parse JSON bodies
 
@@ -22,6 +22,7 @@ app.use("/uploads", express.static("uploads"))
 app.use("/api/users", userRoutes);
 app.use("/api/admins", adminRoutes);
 app.use("/api/courses", courseRoutes);
+app.use("/api/payments", paymentRoutes);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
