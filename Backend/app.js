@@ -1,15 +1,17 @@
 const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
-
 const connectToDatabase = require('./database/index.js');
 const userRoutes = require('./routes/user.js');
 const adminRoutes = require('./routes/admin.js');
 const courseRoutes = require('./routes/course.js');
 const app = express();
 const paymentRoutes = require("./routes/payment.js");
+const cors = require('cors');
+
 // Middleware
 app.use(express.json()); // Parse JSON bodies
+app.use(cors()); //Enables cors for cross-domain requests 
 
 // Root Route
 app.get('/', (req, res) => {
