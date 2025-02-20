@@ -23,7 +23,7 @@ const schema = new mongoose.Schema({
     },
     subscription: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Course"
+        ref: "Courses"
     }]
 }, {
     timestamps: true, // Adds createdAt and updatedAt timestamps

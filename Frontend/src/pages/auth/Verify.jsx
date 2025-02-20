@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { UserData } from "../../context/UserContext";
 
 const Verify = () => {
   const [otp, setOtp] = useState("");
+const  {btnLoading,verifyOtp} =UserData()
   const [searchParams] = useSearchParams();
   const email = searchParams.get("email"); // Get email from URL query
   const navigate = useNavigate();
 
-  const handleVerify = (e) => {
+  const handleVerify = async(e) => {
     e.preventDefault();
+await verifyOtp(Number(otp),navigate)
     if (otp === "123456") {
       // Simulated OTP
       alert("OTP Verified Successfully!");
@@ -35,11 +38,11 @@ const Verify = () => {
             onChange={(e) => setOtp(e.target.value)}
             required
           />
-          <button
+          <button disabled={btnLoading}
             type="submit"
             className="w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600"
           >
-            Verify OTP
+            {btnLoading?"Please Wait...":"Verify" }
           </button>
         </form>
         <p className="mt-4 text-center">
