@@ -12,13 +12,13 @@ const  {btnLoading,verifyOtp} =UserData()
   const handleVerify = async(e) => {
     e.preventDefault();
 await verifyOtp(Number(otp),navigate)
-    if (otp === "123456") {
-      // Simulated OTP
-      alert("OTP Verified Successfully!");
-      navigate("/login"); // Redirect to login page
-    } else {
-      alert("Invalid OTP. Try again.");
-    }
+    // if (otp === "123456") {
+    //   // Simulated OTP
+    //   alert("OTP Verified Successfully!");
+    //   navigate("/login"); // Redirect to login page
+    // } else {
+    //   alert("Invalid OTP. Try again.");
+    // }
   };
 
   return (
