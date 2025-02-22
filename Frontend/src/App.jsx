@@ -9,6 +9,7 @@ import Account from "./pages/account/Account";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Verify from "./pages/auth/Verify";
+import Courses from "./pages/courses/Courses";
 import Home from "./pages/home/Home";
 function App() {
   // const { user } = UserData();
@@ -29,6 +30,7 @@ function App() {
               element={isAuth ? <Account user={user} /> : <Login />}
             />
             <Route path="/about" element={<About />} />
+            <Route path="/courses" element={<Courses />} />
             <Route path="/login" element={isAuth ? <Home /> : <Login />} />
             <Route
               path="/register"
