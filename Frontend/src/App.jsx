@@ -9,6 +9,7 @@ import Account from "./pages/account/Account";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Verify from "./pages/auth/Verify";
+import CourseDescription from "./pages/coursedescription/CourseDescription";
 import Courses from "./pages/courses/Courses";
 import Home from "./pages/home/Home";
 function App() {
@@ -37,6 +38,10 @@ function App() {
               element={isAuth ? <Home /> : <Register />}
             />
             <Route path="/verify" element={isAuth ? <Home /> : <Verify />} />
+            <Route
+              path="courses/:id"
+              element={isAuth ? <CourseDescription user={user} /> : <Login />}
+            />
           </Routes>
           <Footer />
         </BrowserRouter>
