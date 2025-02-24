@@ -69,9 +69,10 @@ export const UserContextProvider = ({ children }) => {
 
   async function fetchUser() {
     try {
+      const token = localStorage.getItem("token");
       const { data } = await axios.get(`${server}/api/users/me`, {
         headers: {
-          token: localStorage.getItem("token"),
+          Authorization: `Bearer ${token}`,
         },
       });
       setIsAuth(true);

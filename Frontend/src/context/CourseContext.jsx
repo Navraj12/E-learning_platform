@@ -15,14 +15,15 @@ export const CourseContextProvider = ({ children }) => {
       console.log(error);
     }
   }
-  async function fetchCourse(id) {
+
+  const fetchCourse = async (id) => {
     try {
-      const { data } = await axios.get(`${server}/api/courses/$(id)`);
+      const { data } = await axios.get(`${server}/api/courses/${id}`);
       setCourse(data.course);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchCourses();

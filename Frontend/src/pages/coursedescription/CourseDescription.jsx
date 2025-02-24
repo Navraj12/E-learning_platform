@@ -1,4 +1,5 @@
 import axios from "axios"; // Import axios
+import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CourseData } from "../../context/CourseContext";
@@ -99,6 +100,11 @@ const CourseDescription = ({ user }) => {
       )}
     </div>
   );
+};
+CourseDescription.propTypes = {
+  user: PropTypes.shape({
+    subscription: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
 };
 
 export default CourseDescription;
