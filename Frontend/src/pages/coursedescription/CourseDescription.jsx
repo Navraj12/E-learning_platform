@@ -1,16 +1,45 @@
+import axios from "axios"; // Import axios
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CourseData } from "../../context/CourseContext";
 import { server } from "../../main";
+import { initializeKhaltiCheckout } from "../../utils/Khalti.js";
+// import { initializeKhaltiCheckout } from "../utils/khalti.jsx"; // Import Khalti utility
 
-const CourseDescription = (user) => {
+const CourseDescription = ({ user }) => {
   const params = useParams();
   const navigate = useNavigate();
-  const { fetchCourse, course } = CourseData;
+  const { fetchCourse, course } = CourseData();
 
   useEffect(() => {
     fetchCourse(params.id);
   }, [fetchCourse, params.id]);
+
+  const handlePaymentSuccess = async (payload) => {
+    try {
+      // Call your backend to verify the payment
+      const response = await axios.post(`${server}/api/payment/verify`, {
+        token: payload.token,
+        amount: payload.amount,
+        courseId: course._id,
+      });
+
+      if (response.data.success) {
+        alert("Payment successful! You can now access the course.");
+        navigate(`/courses/study/${course._id}`);
+      } else {
+        alert("Payment verification failed. Please contact support.");
+      }
+    } catch (error) {
+      console.error("Error verifying payment:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
+
+  const handlePaymentError = (error) => {
+    console.error("Payment Error:", error);
+    alert("Payment failed. Please try again.");
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
@@ -50,10 +79,18 @@ const CourseDescription = (user) => {
                 </button>
               ) : (
                 <button
-                  onClick={() => navigate(`/courses/buy/${course._id}`)}
+                  onClick={() =>
+                    initializeKhaltiCheckout(
+                      course.price,
+                      course.title,
+                      course._id,
+                      handlePaymentSuccess,
+                      handlePaymentError
+                    )
+                  }
                   className="mt-6 px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all"
                 >
-                  Buy Now
+                  Pay with Khalti
                 </button>
               )}
             </div>

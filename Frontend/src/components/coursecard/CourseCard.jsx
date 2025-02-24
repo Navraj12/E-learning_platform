@@ -58,8 +58,9 @@ const CourseCard = ({ course }) => {
           </button>
         )}
         <br />
-        {user &&
-          user.role == "admin"(<button className="bg-red-600">Delete</button>)}
+        {user && user.role == "admin" && (
+          <button className="bg-red-600">Delete</button>
+        )}
       </div>
     </div>
   );
