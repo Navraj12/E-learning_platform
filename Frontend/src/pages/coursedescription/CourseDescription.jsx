@@ -10,11 +10,11 @@ import { initializeKhaltiCheckout } from "../../utils/Khalti.js";
 const CourseDescription = ({ user }) => {
   const params = useParams();
   const navigate = useNavigate();
-  const { fetchCourse, course } = CourseData();
+  const { fetchCourse, course, fetchCourses, fetchMyCourse } = CourseData();
 
   useEffect(() => {
     fetchCourse(params.id);
-  }, [fetchCourse, params.id]);
+  }, [fetchCourse, fetchCourses, fetchMyCourse, params.id]);
 
   const handlePaymentSuccess = async (payload) => {
     try {

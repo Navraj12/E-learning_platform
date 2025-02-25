@@ -31,7 +31,7 @@ const Account = ({ user }) => {
             </p>
           </div>
           <div className="mt-6 space-y-3">
-            <button className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-purple-700 transition">
+            <button onClick={()=>navigate(`${user._id}/dashboard`)} className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-purple-700 transition">
               <MdOutlineDashboardCustomize className="text-xl" />
               Dashboard
             </button>
