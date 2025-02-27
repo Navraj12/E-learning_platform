@@ -46,7 +46,14 @@ export const CourseContextProvider = ({ children }) => {
   }, []);
   return (
     <CourseContext.Provider
-      value={{ courses, fetchCourses, fetchCourse, course, mycourse }}
+      value={{
+        courses,
+        fetchCourses,
+        fetchCourse,
+        course,
+        mycourse,
+        fetchMyCourse,
+      }}
     >
       {" "}
       {children}{" "}

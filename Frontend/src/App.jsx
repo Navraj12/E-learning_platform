@@ -11,8 +11,9 @@ import Register from "./pages/auth/Register";
 import Verify from "./pages/auth/Verify";
 import CourseDescription from "./pages/coursedescription/CourseDescription";
 import Courses from "./pages/courses/Courses";
-import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Home from "./pages/home/Home";
+import Lecture from "./pages/lecture/Lecture";
 function App() {
   // const { user } = UserData();
   // console.log(user);
@@ -46,6 +47,11 @@ function App() {
             <Route
               path="/:id/dashboard"
               element={isAuth ? <Dashboard user={user} /> : <Login />}
+            />
+
+            <Route
+              path="/:id/lectures"
+              element={isAuth ? <Lecture user={user} /> : <Login />}
             />
           </Routes>
           <Footer />

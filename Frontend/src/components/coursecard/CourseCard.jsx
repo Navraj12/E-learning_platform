@@ -1,11 +1,31 @@
+import axios from "axios";
 import React from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { CourseData } from "../../context/CourseContext";
 import { UserData } from "../../context/UserContext";
 import { server } from "../../main";
 
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();
   const { user, isAuth } = UserData();
+  const { fetchCourses } = CourseData();
+
+  const deleteHandler = async (id) => {
+    if (confirm("Are you sure to delete this course")) {
+      try {
+        const { data } = await axios.delete(`${server}/api/course/${id}`, {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        });
+        toast.success(data.message);
+        fetchCourses;
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    }
+  };
 
   return (
     <div className="bg-white shadow-lg rounded-2xl overflow-hidden max-w-sm">
@@ -59,7 +79,12 @@ const CourseCard = ({ course }) => {
         )}
         <br />
         {user && user.role == "admin" && (
-          <button className="bg-red-600">Delete</button>
+          <button
+            onClick={() => deleteHandler(course._id)}
+            className="bg-red-600"
+          >
+            Delete
+          </button>
         )}
       </div>
     </div>
