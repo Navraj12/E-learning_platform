@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import toast from "react-hot-toast";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
@@ -31,10 +32,27 @@ const Account = ({ user }) => {
             </p>
           </div>
           <div className="mt-6 space-y-3">
-            <button onClick={()=>navigate(`${user._id}/dashboard`)} className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-purple-700 transition">
+            <button
+              onClick={() => navigate(`${user._id}/dashboard`)}
+              className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-purple-700 transition"
+            >
               <MdOutlineDashboardCustomize className="text-xl" />
               Dashboard
             </button>
+            <br />
+
+            {user.role === "admin" && (
+              <button
+                onClick={() => navigate(`/admin/dashboard`)}
+                className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-purple-700 transition"
+              >
+                <MdOutlineDashboardCustomize className="text-xl" />
+                Admin Dashboard
+              </button>
+            )}
+
+            <br />
+
             <button
               className="w-full flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-red-700 transition"
               onClick={logoutHandler}
@@ -47,6 +65,14 @@ const Account = ({ user }) => {
       )}
     </div>
   );
+};
+Account.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Account;
