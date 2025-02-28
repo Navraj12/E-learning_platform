@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AdminCourses from "./admin/Courses/AdminCourses";
 import AdminDashboard from "./admin/Dashboard/AdminDashboard";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
@@ -57,6 +58,10 @@ function App() {
             <Route
               path="/admin/lectures"
               element={isAuth ? <AdminDashboard user={user} /> : <Login />}
+            />
+            <Route
+              path="/admin/courses"
+              element={isAuth ? <AdminCourses user={user} /> : <Login />}
             />
           </Routes>
           <Footer />
