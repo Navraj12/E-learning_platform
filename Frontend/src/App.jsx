@@ -13,6 +13,7 @@ import Register from "./pages/auth/Register";
 import Verify from "./pages/auth/Verify";
 import CourseDescription from "./pages/coursedescription/CourseDescription";
 import Courses from "./pages/courses/Courses";
+import CourseStudy from "./pages/coursestudy/CourseStudy";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";
 import Lecture from "./pages/lecture/Lecture";
@@ -46,13 +47,18 @@ function App() {
               path="/courses/:id"
               element={isAuth ? <CourseDescription user={user} /> : <Login />}
             />
+            <Route path="/courses/study/:id" element={<CourseStudy />} />
             <Route
-              path="/:id/dashboard"
+              path="/account/:id/dashboard"
               element={isAuth ? <Dashboard user={user} /> : <Login />}
             />
 
-            <Route
+            {/* <Route
               path="/:id/lectures"
+              element={isAuth ? <Lecture user={user} /> : <Login />}
+            /> */}
+            <Route
+              path="/lectures/:id"
               element={isAuth ? <Lecture user={user} /> : <Login />}
             />
             <Route
