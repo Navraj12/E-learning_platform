@@ -30,9 +30,12 @@ const Lecture = ({ user }) => {
 
   async function fetchLectures() {
     try {
-      const { data } = await axios.get(`${server}/api/lectures/${params.id}`, {
-        headers: { token: localStorage.getItem("token") },
-      });
+      const { data } = await axios.get(
+        `${server}/api/courses/${params.id}/lectures`,
+        {
+          headers: { token: localStorage.getItem("token") },
+        }
+      );
       setLectures(data.lectures);
     } catch (error) {
       toast.error("Failed to fetch lectures");
@@ -44,9 +47,12 @@ const Lecture = ({ user }) => {
   async function fetchLecture(id) {
     setLecLoading(true);
     try {
-      const { data } = await axios.get(`${server}/api/lectures/${id}`, {
-        headers: { token: localStorage.getItem("token") },
-      });
+      const { data } = await axios.get(
+        `${server}/api/courses/${params.id}/lectures/${id}`,
+        {
+          headers: { token: localStorage.getItem("token") },
+        }
+      );
       setLecture(data.lecture);
     } catch (error) {
       toast.error("Failed to fetch lecture");

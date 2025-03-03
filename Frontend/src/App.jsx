@@ -58,13 +58,14 @@ function App() {
               element={isAuth ? <Lecture user={user} /> : <Login />}
             /> */}
             <Route
-              path="/lectures/:id"
+              path="/courses/:id/lectures/:lectureId"
               element={isAuth ? <Lecture user={user} /> : <Login />}
             />
             <Route
               path="/admin/lectures"
               element={isAuth ? <AdminDashboard user={user} /> : <Login />}
             />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route
               path="/admin/courses"
               element={isAuth ? <AdminCourses user={user} /> : <Login />}
