@@ -9,9 +9,14 @@ const app = express();
 const paymentRoutes = require("./routes/payment.js");
 const cors = require('cors');
 
+
+
+
+
 // Middleware
 app.use(express.json()); // Parse JSON bodies
 app.use(cors()); //Enables cors for cross-domain requests 
+
 
 // Root Route
 app.get('/', (req, res) => {

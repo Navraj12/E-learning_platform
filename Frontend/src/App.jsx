@@ -53,10 +53,10 @@ function App() {
               element={isAuth ? <Dashboard user={user} /> : <Login />}
             />
 
-            {/* <Route
-              path="/:id/lectures"
+            <Route
+              path="/lectures/:id"
               element={isAuth ? <Lecture user={user} /> : <Login />}
-            /> */}
+            />
             <Route
               path="/courses/:id/lectures/:lectureId"
               element={isAuth ? <Lecture user={user} /> : <Login />}
@@ -66,6 +66,7 @@ function App() {
               element={isAuth ? <AdminDashboard user={user} /> : <Login />}
             />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            {/* <Route path="/lectures/:id" element={<Lecture />} /> */}
             <Route
               path="/admin/courses"
               element={isAuth ? <AdminCourses user={user} /> : <Login />}
