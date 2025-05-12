@@ -1,4 +1,3 @@
-import React from "react";
 import { CiLinkedin } from "react-icons/ci";
 import { FaFacebook, FaGithubSquare, FaTwitterSquare } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";

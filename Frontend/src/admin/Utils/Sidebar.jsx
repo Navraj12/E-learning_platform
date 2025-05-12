@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import { FaBook, FaHome, FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";

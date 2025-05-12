@@ -1,4 +1,3 @@
-import React from "react";
 import CourseCard from "../../components/coursecard/CourseCard";
 import { CourseData } from "../../context/CourseContext";
 

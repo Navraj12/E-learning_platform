@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { CourseData } from "../../context/CourseContext";

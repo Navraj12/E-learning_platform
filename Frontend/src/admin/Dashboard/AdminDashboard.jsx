@@ -1,6 +1,6 @@
 import axios from "axios";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { server } from "../../main";
 import Layout from "../Utils/Layout";

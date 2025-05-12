@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminCourses from "./admin/Courses/AdminCourses";
 import AdminDashboard from "./admin/Dashboard/AdminDashboard";

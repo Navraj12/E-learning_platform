@@ -3,14 +3,14 @@ const {
     isAuth,
     isAdmin
 } = require('../middlewares/isAuth.js');
-router.get('/stats', (req, res) => {
-    const stats = {
-        totalUsers: 100,
-        totalCourses: 20,
-        revenue: 5000,
-    };
-    res.status(200).json(stats);
-});
+// router.get('/stats', (req, res) => {
+//     const stats = {
+//         totalUsers: 100,
+//         totalCourses: 20,
+//         revenue: 5000,
+//     };
+//     res.status(200).json(stats);
+// });
 const { createCourse, addLectures, deleteLecture, deleteCourse, getAllStats } = require('../controllers/admin');
 const { uploadFiles } = require('../middlewares/multer');
 const router = express.Router();

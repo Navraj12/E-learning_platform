@@ -4,14 +4,14 @@ import { UserData } from "../../context/UserContext";
 
 const Verify = () => {
   const [otp, setOtp] = useState("");
-const  {btnLoading,verifyOtp} =UserData()
+  const { btnLoading, verifyOtp } = UserData();
   const [searchParams] = useSearchParams();
   const email = searchParams.get("email"); // Get email from URL query
   const navigate = useNavigate();
 
-  const handleVerify = async(e) => {
+  const handleVerify = async (e) => {
     e.preventDefault();
-await verifyOtp(Number(otp),navigate)
+    await verifyOtp(Number(otp), navigate);
     // if (otp === "123456") {
     //   // Simulated OTP
     //   alert("OTP Verified Successfully!");
@@ -38,11 +38,12 @@ await verifyOtp(Number(otp),navigate)
             onChange={(e) => setOtp(e.target.value)}
             required
           />
-          <button disabled={btnLoading}
+          <button
+            disabled={btnLoading}
             type="submit"
             className="w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600"
           >
-            {btnLoading?"Please Wait...":"Verify" }
+            {btnLoading ? "Please Wait..." : "Verify"}
           </button>
         </form>
         <p className="mt-4 text-center">
