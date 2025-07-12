@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CourseData } from "../../context/CourseContext";
 import { server } from "../../main";
-import { initializeKhaltiCheckout } from "../../utils/Khalti.js";
+import { initializeKhaltiCheckout } from "../../utils/khalti";
 // import { initializeKhaltiCheckout } from "../utils/khalti.jsx"; // Import Khalti utility
 
 const CourseDescription = ({ user }) => {
@@ -68,7 +68,7 @@ const CourseDescription = ({ user }) => {
               </p>
 
               <p className="text-xl mt-4 font-semibold text-gray-900">
-                Let's get started with this course at Rs. {course.price}
+                Let&apos;s get started with this course at Rs. {course.price}
               </p>
 
               {user && user.subscription.includes(course._id) ? (
