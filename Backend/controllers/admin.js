@@ -13,7 +13,10 @@ const createCourse = TryCatch(async(req, res) => {
     const image = req.file;
 
     // Validate required fields
-    if (!title || !description || !category || !createdBy || !duration || !price) {
+    // if (!title || !description || !category || !createdBy || !duration || !price) {
+    //     return res.status(400).json({ message: "All fields are required" });
+    // }
+    if (!title || !description) {
         return res.status(400).json({ message: "All fields are required" });
     }
 

@@ -12,13 +12,14 @@ const isAuth = async(req, res, next) => {
             return res.status(403).json({ message: "Please login." });
         }
 
-        if (!authHeader.startsWith('Bearer ')) {
-            console.log("Authorization header format incorrect.");
-            return res.status(403).json({ message: "Please login." });
-        }
+        // if (!authHeader.startsWith('Bearer ')) {
+        //     console.log("Authorization header format incorrect.");
+        //     return res.status(403).json({ message: "Please login." });
+        // }
 
-        const token = authHeader.split(' ')[1];
-        console.log("Extracted Token:", token);
+        // const token = authHeader.split(' ')[1];
+        // console.log("Extracted Token:", token);
+        const token = authHeader; // Use the entire header as the token
 
         const decodedData = jwt.verify(token, process.env.JWT_SEC);
         console.log("Decoded Token:", decodedData);
@@ -38,10 +39,12 @@ const isAuth = async(req, res, next) => {
 
         if (error.name === "TokenExpiredError") {
             return res.status(401).json({ message: "Session expired. Please login again." });
+            return;
         }
 
         if (error.name === "JsonWebTokenError") {
             return res.status(401).json({ message: "Invalid token. Please login again." });
+            return;
         }
 
         res.status(500).json({ message: "Authentication failed. Please try again." });

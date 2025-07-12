@@ -15,12 +15,6 @@ const categories = [
 
 const AdminCourses = ({ user }) => {
   const navigate = useNavigate();
-
-  if (!user || user.role !== "admin") {
-    navigate("/");
-    return null;
-  }
-
   const { courses } = CourseData();
 
   const [formData, setFormData] = useState({
@@ -35,6 +29,11 @@ const AdminCourses = ({ user }) => {
 
   const [imagePrev, setImagePrev] = useState("");
   const [btnLoading, setBtnLoading] = useState(false);
+
+  if (!user || user.role !== "admin") {
+    navigate("/");
+    return null;
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;

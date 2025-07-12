@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import toast, { Toaster } from "react-hot-toast";
 import { server } from "../main";
 
@@ -73,7 +74,7 @@ export const UserContextProvider = ({ children }) => {
       const token = localStorage.getItem("token");
       const { data } = await axios.get(`${server}/api/users/me`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `${token}`,
         },
       });
       setIsAuth(true);
@@ -107,5 +108,8 @@ export const UserContextProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
-
 export const UserData = () => useContext(UserContext);
+
+UserContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

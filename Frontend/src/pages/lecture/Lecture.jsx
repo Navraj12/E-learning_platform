@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
@@ -32,6 +33,7 @@ const Lecture = ({ user }) => {
     try {
       const { data } = await axios.get(
         `${server}/api/courses/${params.id}/lectures`,
+        // `${server}/api/admin/okay`,
         {
           headers: { token: localStorage.getItem("token") },
         }
@@ -85,10 +87,11 @@ const Lecture = ({ user }) => {
 
     try {
       const { data } = await axios.post(
-        `${server}/api/courses/${params.id}`,
+        // `${server}/api/courses/${params.id}`,
+        `${server}/api/admins/${params.id}`,
         myForm,
         {
-          headers: { token: localStorage.getItem("token") },
+          headers: { Authorization: localStorage.getItem("token") },
         }
       );
       toast.success(data.message);
