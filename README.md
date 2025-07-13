@@ -32,5 +32,16 @@ _(https://e-learning-platform-sigma.vercel.app/)_
 <img width="706" height="867" alt="{DDB8EA3E-5689-4CA7-AB02-54456E212B35}" src="https://github.com/user-attachments/assets/fd73753b-b48a-49e9-8db5-98f47ec04158" /> 
 
 
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Navraj12/E-learning_platform.git
+cd E-learning_platform
+
+
 
 
