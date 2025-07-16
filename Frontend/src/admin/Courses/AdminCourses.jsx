@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CourseCard from "../../components/coursecard/CourseCard";
+import CourseCard from "../../components/courseCard/CourseCard";
 import { CourseData } from "../../context/CourseContext";
 import Layout from "../Utils/Layout";
 
