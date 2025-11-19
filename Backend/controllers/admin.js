@@ -7,8 +7,6 @@ const fs = require('fs');
 const { User } = require('../models/User.js');
 
 const createCourse = TryCatch(async(req, res) => {
-    console.log("Request Body:", req.body); // Log the request body
-    console.log("Request File:", req.file); // Log the uploaded file
     const { title, description, category, createdBy, duration, price } = req.body;
     const image = req.file;
 
@@ -81,28 +79,23 @@ const deleteCourse = TryCatch(async(req, res) => {
         return res.status(404).json({ message: "Course not found" });
     }
 
-    // Delete all lectures associated with the course
     const lectures = await Lecture.find({ course: course._id });
 
     await Promise.all(
         lectures.map(async(lecture) => {
-            await unlinkAsync(lecture.video); // Delete the video file
+            await unlinkAsync(lecture.video);
             console.log("Video deleted");
         })
     );
 
-    // Delete the course image
     rm(course.image, () => {
         console.log("Image deleted");
     });
 
-    // Delete all lectures associated with the course
     await Lecture.deleteMany({ course: req.params.id });
 
-    // Delete the course
     await course.deleteOne();
 
-    // Remove the course from users' subscriptions
     await User.updateMany({}, {
         $pull: {
             subscription: req.params.id,
