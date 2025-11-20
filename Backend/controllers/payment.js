@@ -3,7 +3,6 @@ const axios = require('axios');
 const { User } = require('../models/User.js');
 
 
-//Initiate Payment
 const initiatePayment = TryCatch(async(req, res) => {
     const { amount, courseId } = req.body;
     if (!amount || !courseId) {
