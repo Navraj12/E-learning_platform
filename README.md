@@ -74,7 +74,6 @@ Available Routes
 <img width="1880" height="885" alt="{1D11F853-2FAB-444E-A297-158F4729C441}" src="https://github.com/user-attachments/assets/a2ded54f-00c0-4ec1-aec5-fc316baf9199" />
 
 
-
 ##🙋‍♂️ Author
 
 🌐 [Developed by Navraj Awasthi](https://github.com/Navraj12)
