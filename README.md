@@ -9,7 +9,6 @@ This project is a simple e-learning web application built using **React.js**,**N
 _(https://e-learning-platform-sigma.vercel.app/)_
 
 ---
-
 ## 🧰 Tech Stack
 
 - **Backend**: Node.js, Express.js
