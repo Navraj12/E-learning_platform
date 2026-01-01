@@ -1,4 +1,4 @@
-import CourseCard from "../../components/coursecard/CourseCard";
+import CourseCard from "../../components/coursecard/CourseCard.jsx";
 import { CourseData } from "../../context/CourseContext";
 
 const Courses = () => {
