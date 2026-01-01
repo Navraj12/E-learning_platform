@@ -9,7 +9,6 @@ This project is a simple e-learning web application built using **React.js**,**N
 _(https://e-learning-platform-sigma.vercel.app/)_
 
 ---
-
 ## 🧰 Tech Stack
 
 - **Backend**: Node.js, Express.js
@@ -72,12 +71,6 @@ Available Routes
 <img width="1893" height="877" alt="{CCD0EB5F-EC07-461D-9BE4-C5156497A9C5}" src="https://github.com/user-attachments/assets/3b231652-0046-49a7-9835-347d8947c804" />,
 <img width="1878" height="875" alt="{9763F779-AE5A-4D2D-88D5-C73BF071CB89}" src="https://github.com/user-attachments/assets/acab07b2-1499-48d0-a49e-9fc48c23f316" />,
 <img width="1880" height="885" alt="{1D11F853-2FAB-444E-A297-158F4729C441}" src="https://github.com/user-attachments/assets/a2ded54f-00c0-4ec1-aec5-fc316baf9199" />
-
-
-
-
-
-
 
 
 ##🙋‍♂️ Author
