@@ -65,7 +65,6 @@ Available Routes
 | `/login`    | Login form        |
 | `/register` | Registration form |
 
-
 **screenshots**
 <img width="1858" height="872" alt="{D847617E-115B-4AFB-BF2B-8B879E6EC6EE}" src="https://github.com/user-attachments/assets/7a449f82-5327-4caa-85da-a5eef334d2c7" />,
 <img width="1893" height="877" alt="{CCD0EB5F-EC07-461D-9BE4-C5156497A9C5}" src="https://github.com/user-attachments/assets/3b231652-0046-49a7-9835-347d8947c804" />,
